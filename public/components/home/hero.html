@@ -10,10 +10,10 @@
 <script no-warn>
   export default ({el,$}) => {
     el.gstarted.addEventListener('click', () => {
-      $.router.push('docs.html#getting-started.html');
+      $.router.push('docs.html?path=getting-started');
     });
     el.docs.addEventListener('click', () => {
-      $.router.push('docs.html#index.html');
+      $.router.push('docs.html');
     });
   }
 </script>
