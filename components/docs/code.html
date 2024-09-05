@@ -1,0 +1,102 @@
+<property name="code" default="<b>loading</b>" />
+<property name="lang" default="html"/>
+
+<template>
+  <code>
+    <button id="lang">
+      {{ lang }}
+      <span>📋</span>
+    </button>
+    <pre id="content">
+      <slot id="slot"></slot>
+    </pre>
+  </code>
+</template>
+
+<script>
+  import hljs from 'https://unpkg.com/@highlightjs/cdn-assets@11.10.0/es/highlight.min.js';
+  import js from 'https://unpkg.com/@highlightjs/cdn-assets@11.10.0/es/languages/javascript.min.js';
+  import html from 'https://unpkg.com/@highlightjs/cdn-assets@11.10.0/es/languages/xml.min.js';
+
+  function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(function() {
+        console.log("Text copied to clipboard");
+    }).catch(function(err) {
+        console.error("Error copying text: ", err);
+    });
+  }
+
+  export default function({ el, props, rx, $ }) {
+    hljs.registerLanguage('js', js);
+    hljs.registerLanguage('html', html);
+
+    let slotContent = el.slot.assignedNodes()[0].textContent;
+    console.error(slotContent);
+
+    let t = hljs.highlight(slotContent, { language: props.lang.value }).value;
+    el.content.innerHTML = t;
+    
+    rx.lang.value = props.lang.value.toUpperCase();
+
+    el.lang.addEventListener('click', () => {
+      copyToClipboard(code);
+      rx.lang.value = 'COPIED!';
+      setTimeout(() => {
+        rx.lang.value = props.lang.value.toUpperCase();
+      }, 1000);
+    });
+  }
+</script>
+
+<style>
+  @import url('https://unpkg.com/@highlightjs/cdn-assets@11.10.0/styles/a11y-light.min.css');
+
+  :host {
+    display: inline-block;
+    padding: 16px;
+    border-radius: 4px;
+    background-color: #eee;
+    width: 100%;
+    position: relative;
+  }
+
+  pre {
+    margin: 0;
+    padding: 0;
+  }
+
+  slot {
+    display: none;
+  }
+
+  #lang {
+    background-color: #e0e0e0;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    border: 0;
+    font-family: 'Courier New', Courier, monospace;
+
+    &:hover span {
+      display: inline-block;
+    }
+
+    & span {
+      display: none;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :host {
+      background-color: #333;
+    }
+
+    #lang {
+      background-color: #444;
+      color: #ddd;
+    }
+  }
+</style>

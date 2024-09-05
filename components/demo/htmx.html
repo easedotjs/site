@@ -1,0 +1,24 @@
+<template>
+  <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+  <div id="color-demo" class="smooth" style="color:red"
+        hx-get="_/htmx-test.html" hx-swap="outerHTML">
+    HTMX Demo
+  </div>
+</template>
+
+<script>
+  export default ({ root }) => {
+    const interval = setInterval(() => {
+      if (window.htmx) {
+        clearInterval(interval);
+        htmx.process(root);
+      }
+    }, 10);
+  };
+</script>
+
+<style>
+  .smooth {
+    transition: all 1s ease-in;
+  }
+</style>

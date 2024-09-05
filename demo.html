@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="module" src="https://unpkg.com/@easedotjs/core/index.min.js"></script>
+    <script type="module" src="https://unpkg.com/@easedotjs/components/index.min.js"></script>
+    <script type="module" src="https://unpkg.com/@easedotjs/reactive/index.min.js"></script>
+    <script type="module" src="https://unpkg.com/@easedotjs/reactive-dom/index.min.js"></script>
+    <script type="module" src="https://unpkg.com/@easedotjs/router/index.min.js"></script>
+    <link rel="component-def" href="component-def.xml" />
+    <link rel="component" name="demo-counter" href="./components/demo/reactive.html" />
+    <link rel="component" name="demo-htmx" href="./components/demo/htmx.html" />
+    <link rel="component" name="demo-jquery" href="./components/demo/jquery.html" />
+    <link rel="component" name="demo-slider" href="./components/demo/slider.html" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Ease - Demos</title>
+    <meta name="ease.core.debug" content="true">
+    <meta name="description" content="Ease is a web framework that lets you do more with less.">
+    <meta name="keywords" content="web, framework, ease, do-more-with-less">
+    <meta name="author" content="Ease">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <ns-header></ns-header>
+    <main>
+      <h1>Counter</h1>
+      <demo-counter></demo-counter>
+      <h1>HTMX</h1>
+      <demo-htmx></demo-htmx>
+      <h1>jQuery</h1>
+      <demo-jquery></demo-jquery>
+      <h1>Slider</h1>
+      <demo-slider></demo-slider>
+    </main>
+    <ns-footer></ns-footer>
+    <style>
+      main {
+        max-width: 800px;
+        width: 320px;
+        margin: 0 auto;
+        padding: 32px 0
+      }
+    </style>
+  </body>
+</html>

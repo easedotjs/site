@@ -1,0 +1,48 @@
+<template>
+  <doc-toc></doc-toc>
+  <doc-details id="details" path="index.html"></doc-details>
+</template>
+
+<script>
+  export default ({ root, el, attr }) => {
+    function updateHash() {
+      const path = location.hash.slice(1);
+      el.details.path = path;
+    }; updateHash()
+
+    addEventListener('hashchange', updateHash);
+  }
+</script>
+
+<style>
+:host {
+  display: flex;
+  flex-direction: row;
+
+  --background: #ffF;
+  --background2: #eee;
+  --foreground: #333;
+  --foreground2: #33a;
+
+  background-color: var(--background);
+
+  @media (prefers-color-scheme: dark) {
+    --background: #222;
+    --background2: #444;
+    --foreground: #eee;
+    --foreground2: #aaf;
+  }
+
+  & :first-child {
+    flex-basis: 20%;
+    min-width: 300px;
+  }
+}
+
+@media(max-width: 1000px) {
+  :host {
+    flex-direction: column;
+  }
+}
+
+</style>

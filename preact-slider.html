@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Slider</title>
+    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+    <style>
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="number"] {
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        function SliderComponent() {
+            const [min, setMin] = React.useState(0);
+            const [max, setMax] = React.useState(100);
+            const [value, setValue] = React.useState(50);
+
+            return (
+                <div className="slider-container">
+                  <button onClick={() => { setMin(0); setMax(100); }}>0-100</button>
+                  <button onClick={() => { setMin(100); setMax(1000); }}>100-1000</button>
+                  <input type="range" min={min} max={max} value={value} onChange={(e)=>setValue(e.target.value)} />
+                </div>
+            );
+        }
+
+        ReactDOM.render(<SliderComponent />, document.getElementById('root'));
+    </script>
+</body>
+</html>

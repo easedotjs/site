@@ -1,0 +1,65 @@
+<template>
+  <div id="header">
+    <h1>Ease v0.0.10</h1>
+  </div>
+  <ul>
+    <li><a href="#index.html">Welcome</a></li>
+    <li><a href="#getting-started.html">Getting Started</a></li>
+    <li>
+      <a href="#extensions.html">Extensions</a>
+      <ul>
+        <li><a href="#extensions/reactive.html">Reactive</a></li>
+        <li><a href="#extensions/reactive-dom.html">Reactive DOM</a></li>
+        <li><a href="#extensions/router.html">Router</a></li>
+      </ul>
+    </li>
+  </ul>
+</template>
+
+<script>
+  export default ({ root, el, attr, $ }) => {
+  };
+</script>
+
+<style>
+  :host {
+    background-color: var(--background2);
+    border-right: 1px solid #ccc;
+    min-width: 250px;
+  }
+
+  #header {
+    display: block;
+    background-color: var(--background);
+    color: var(--foreground);
+    padding: 8px 16px;
+    border-bottom: 1px solid var(--background);
+
+    & h1 {
+      font-size: 1.5em;
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  li {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 0.9em;
+    margin: 4px 0;
+    color: var(--foreground);      
+    & a {
+      text-decoration: none;
+      color: var(--foreground);      
+    }
+  }
+
+  ul ul {
+    padding-left: 20px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :host {
+      border-right: 1px solid #111;
+    }
+  }
+</style>

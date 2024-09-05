@@ -1,0 +1,30 @@
+@property --degrees {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+:not(:defined) { display: none; }
+
+:root {
+  --black: #111;
+  --white: #fff0f0;
+
+  --color-1: #423;
+  --color-2: #235;
+  --color-3: #a53;
+
+  --sans-serif: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  --serif: 'Georgia', 'Times New Roman', Times, serif;
+  --monospace: 'Courier New', Courier, monospace;
+}
+
+body, html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,52 @@
+<template>
+  <button id="add" class="bg-red-100 border-1">+</button>
+    {{ counter }}
+  <button id="sub">-</button>
+</template>
+
+<script>
+  export default ({ el, rx }) => {
+    rx.counter.value = 0
+
+    el.add.addEventListener('click', () => {
+      rx.counter.value++
+    });
+
+    el.sub.addEventListener('click', () => {
+      rx.counter.value--
+    });
+  }
+</script>
+
+<style>
+  :host {
+    background-color: #eee;
+    
+    margin: 8px;
+    
+    border-radius: 14px;
+
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 2rem;
+    font-family: sans-serif;
+  }
+
+  button {
+    padding: 8px 32px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 2rem;
+    background-color: transparent;
+    &#add {
+      border-bottom: 1px solid #ddd;
+    }
+    &#sub {
+      border-top: 1px solid #ddd;
+    }
+  }
+</style>

@@ -1,0 +1,66 @@
+<template>
+  <label>
+    Min
+    <input id="min" value="0"> 
+  </label>
+  <label>
+    Max
+    <input id="max" value="10">
+  </label>
+  <label>
+    Value
+    <input id="value" value="5">
+  </label>
+  <label>
+    Slider
+    <input type="range" id="slider" min="0" max="100" value="50">
+  </label>
+</template>
+
+<script>
+  export default ({ el, $ }) => {
+    let value = $.live(0).subscribe(v => {
+      el.value.value = v.value
+    })
+
+    el.slider.addEventListener('input', () => {
+      value.value = el.slider.value
+    })
+
+    el.value.addEventListener('input', () => {
+      el.slider.value = el.value.value
+    })
+
+    el.min.addEventListener('input', () => {
+      el.slider.min = el.min.value
+      el.value.value = v.value
+    })
+
+    el.max.addEventListener('input', () => {
+      el.slider.max = el.max.value
+      el.value.value = v.value
+    })
+
+    return () => {
+      value.unsubscribeAll()
+    }
+  }
+</script>
+
+<style>
+  :host {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  input {
+    width: 100%;
+  }
+</style>

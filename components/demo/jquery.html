@@ -1,0 +1,21 @@
+<template>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <div>
+    <button id="demo" class="smooth" style="color:red">
+      jQuery Demo
+    </button>
+  </div>
+</template>
+
+<script>
+  export default ({ el }) => {
+    const interval = setInterval(() => {
+      if (window.jQuery) {
+        clearInterval(interval);
+        $(el.demo).click(() => {
+          $(el.demo).css('color', 'blue');
+        });
+      }
+    }, 10);
+  };
+</script>

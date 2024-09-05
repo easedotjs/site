@@ -1,0 +1,71 @@
+<property name="test" default="#F0F" expose-to-styles />
+<property name="test2" default="test2" expose-to-styles />
+<property name="test3" default="test3" expose-to-styles />
+<property name="test4" default="test4" expose-to-styles />
+
+<template>
+  <span id="test">test</span>
+  DEBUG COMPONENT
+  {{ test }}
+  ::
+  {{ :test2 }}
+  ::
+  {{ :test3 }}
+  ::
+  {{ :test4 }}
+  ::
+  {{ :test }}
+  ::
+  <input id="inputTest" />
+  {{ [el.test.innerText.toUpperCase()] }}
+</template>
+
+<script>
+  export default function ({ root, el, props, ext, rx, self }) {
+    root.addEventListener('connect', () => {
+      console.log('attached');
+    });
+
+    root.addEventListener('disconnect', () => {
+      console.log('detached');
+    });
+
+    props.test.watch((val, prev) => {
+      rx.test.value = val;
+      el.inputTest.value = val;
+      console.log('test:', val, prev);
+    });
+
+    console.error('===');
+    console.error('root:', root);
+    console.error('el:', el);
+    console.error('props:', props);
+    console.error('ext:', ext);
+
+    props.test.value = "#FF0";
+
+    const testEventCallback = () => {
+      console.log('test event fired, removing');
+      props.test.value = "#0FF";
+      el.test.innerText = 'Hello!';
+      rx.update();
+      root.removeEventListener('click', testEventCallback);
+    };
+
+    root.addEventListener('click', testEventCallback); 
+
+    console.error(rx);
+
+    el.inputTest.addEventListener('input', (e) => {
+      props.test.value = e.target.value;
+    });
+    el.inputTest.value = props.test.value;
+  };
+</script>
+
+<style>
+  :host {
+    background: var(--test);
+    font-size: 1.4em;
+  }
+</style>

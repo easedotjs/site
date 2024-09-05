@@ -1,0 +1,27 @@
+<property name="color" default="#333" expose-to-styles attribute />
+
+<template>
+  <div>
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+  export default function ({ root, el, attrs }) {
+    console.error('!', this.color);
+  }
+</script>
+
+<style>
+  :host {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 32px 32px;
+    text-align: center;
+    background-color: var(--color, #777);
+    background-image: linear-gradient(2deg,  #FFFFFF22,  #00000022);
+    color: #FFF;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+</style>
