@@ -4,8 +4,6 @@
   inherits: false;
 }
 
-:not(:defined) { display: none; }
-
 :root {
   --black: #111;
   --white: #fff0f0;

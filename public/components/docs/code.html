@@ -1,11 +1,10 @@
 <property name="code" default="<b>loading</b>" />
-<property name="lang" default="html"/>
+<property name="lang" default="html" attribute/>
 
 <template>
   <code>
-    <button id="lang">
+    <button id="lang" title="Click to Copy to Clipboard">
       {{ lang }}
-      <span>📋</span>
     </button>
     <pre id="content">
       <slot id="slot"></slot>
@@ -30,10 +29,8 @@
     hljs.registerLanguage('js', js);
     hljs.registerLanguage('html', html);
 
-    let slotContent = el.slot.assignedNodes()[0].textContent;
-    console.error(slotContent);
-
-    let t = hljs.highlight(slotContent, { language: props.lang.value }).value;
+    const code = el.slot.assignedNodes()[0].textContent;
+    const t = hljs.highlight(code, { language: props.lang.value }).value;
     el.content.innerHTML = t;
     
     rx.lang.value = props.lang.value.toUpperCase();
@@ -55,9 +52,9 @@
     display: inline-block;
     padding: 16px;
     border-radius: 4px;
-    background-color: #eee;
-    width: 100%;
+    background-color: #f5f5f5;
     position: relative;
+    box-sizing: border-box;
   }
 
   pre {
@@ -70,23 +67,16 @@
   }
 
   #lang {
-    background-color: #e0e0e0;
+    background-color: #f0f0f0;
+    box-shadow: 0px 1px 1px rgba(0,0,0,0.1);
     display: inline-block;
     padding: 4px 12px;
     border-radius: 4px;
     position: absolute;
-    right: 12px;
-    top: 12px;
+    left: 12px;
+    top: -12px;
     border: 0;
     font-family: 'Courier New', Courier, monospace;
-
-    &:hover span {
-      display: inline-block;
-    }
-
-    & span {
-      display: none;
-    }
   }
 
   @media (prefers-color-scheme: dark) {

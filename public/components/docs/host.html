@@ -1,17 +1,15 @@
+<property name="path" default="index" attribute />
 <template>
   <doc-toc></doc-toc>
-  <doc-details id="details" path="index.html"></doc-details>
+  <doc-details id="details" path="index"></doc-details>
 </template>
 
 <script>
-  export default ({ root, el, attr }) => {
-    function updateHash() {
-      const path = location.hash.slice(1);
-      el.details.path = path;
-    }; updateHash()
-
-    addEventListener('hashchange', updateHash);
-  }
+  export default ({ root, el, props, ext }) => {
+    ext.router.onRouteChange((path,args) => {
+      el.details.path = args.path || 'index';
+    });
+  };  
 </script>
 
 <style>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script type="module" src="@easedotjs/core/index.js"></script>
+    <script type="module" src="@easedotjs/components/index.js"></script>
+    <script type="module" src="@easedotjs/reactive-dom/index.js"></script>
+    <script type="module" src="@easedotjs/router/index.js"></script>
+    <link rel="component-def" href="component-def.xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Ease - The Do-More-With-Less Framework</title>
+    <meta name="ease.core.debug" content="true">
+    <meta name="description" content="Ease is a web framework that lets you do more with less.">
+    <meta name="keywords" content="web, framework, ease, do-more-with-less">
+    <meta name="author" content="Ease">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    <template>
+      <ns-header></ns-header>
+      <ns-hero></ns-hero>
+      <main>
+        <ns-details color="#442233">
+          <p>
+            Ease gives you the power of modern frameworks using
+            the tools built right into the browser. No more dealing with 
+            complex build tools, worrying about modules, or configuring a bundler.
+          </p>
+          <p>
+            <strong>Just write your code and <u>ship it</u>.</strong>
+          </p>
+        </ns-details>
+        <ns-details color="#223355">
+          <p>
+            Since Ease is built on web standards, you can use it anywhere you 
+            can use HTML, CSS, and JavaScript.    
+            It plays nicely with other frameworks and libraries, can be used to build isolated
+            components, or full websites.
+            Its modular design lets you pull in features you want and skip the ones you don't.
+          </p>
+          <p>
+            With very little to learn, anyone familiar with HTML can get started with Ease.
+          </p>
+        </ns-details>
+        <ns-demo>
+          <h1 slot="header">
+            Load the Library
+          </h1>
+          <div slot="code">
+            &lt;script type="module" src="https://unpkg.com/@easedotjs/core"&gt;&lt;/script&gt;<br/>
+            &lt;script type="module" src="https://unpkg.com/@easedotjs/components"&gt;&lt;/script&gt;<br/>
+          </div>
+        </ns-demo>    
+        <ns-demo>
+          <h1 slot="header">
+            Load a Component
+          </h1>
+          <div slot="code">
+            &lt;link rel="component" name="ns-hello" href="components/hello.html" /&gt;<br/>
+          </div>
+        </ns-demo>
+        <ns-demo>
+          <h1 slot="header">
+            Use the Component
+          </h1>
+          <div slot="code">
+            &lt;ns-hello&gt;Hello World!&lt;/ns-hello&gt;<br/>
+          </div>
+        </ns-demo>
+        <ns-details color="#223355">
+          <p>
+            Components can be complex, interactive isolated elements with their own styles, 
+            scripts, and templates - or simple, static elements that just render content.
+          </p>
+        </ns-details>
+        <ns-demo>
+          <h1 slot="header">
+            Keep things simple and light...
+          </h1>
+          <div slot="filename">
+            hello.html
+          </div>
+          <div slot="code">
+            &lt;div&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/div&gt;<br/>
+          </div>
+        </ns-demo>
+        <ns-demo>
+          <h1 slot="header">
+            ...or build something more complex
+          </h1>
+          <div slot="filename">
+            hello.html
+          </div>
+          <div slot="code">        
+            &lt;template&gt;<br/>
+            &nbsp;&nbsp;&lt;h1&gt;Hello, &lt;slot&gt;&lt;/slot&gt;&lt;/h1&gt;<br/>
+            &lt;/template&gt;<br/>
+            <br/>
+            &lt;script&gt;<br/>
+            &nbsp;&nbsp;export default ({ root, el, attr }) => {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;el.querySelector('h1').style.color = attr.color;<br/>
+            &nbsp;&nbsp;}<br/>
+            &lt;/script&gt;<br/>
+            <br/>
+            &lt;style&gt;<br/>
+            &nbsp;&nbsp;:host {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;display: block;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;text-align: center;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;font-family: 'Courier New', Courier, monospace;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;font-size: 2em;<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;color: #333;<br/>
+            &nbsp;&nbsp;}<br/>
+            &lt;/style&gt;<br/>
+          </div>
+        </ns-demo>
+        <ns-details color="#442233">
+          <p>
+            Want to feel the nolstagia of the 90s? Load in jQuery and use it in your Ease components.
+            Need to fetch data from an API? Use the native Fetch API.
+            Want to use a modern library like React or Vue? No problem. Ease plays nicely with others.
+          </p>
+          <p>
+            Everything you need is here because everything you need is <em>already</em> in the browser.
+          </p>
+        </ns-details>
+        <ns-demo>
+          <h1 slot="header">
+            Ease packages include...
+          </h1>
+          <div slot="code">
+            @easedotjs/core - The core library<br/>
+            @easedotjs/components - Loads components from HTML documents<br/>
+            @easedotjs/reactive - Adds objects with reactive callbacks<br/>
+            @easedotjs/reactive-dom - Make the content of your components reactive<br/>
+            @easedotjs/router - Make your sites load additional pages without reloading<br/>
+          </div>
+        </ns-demo>
+      </main>
+      <ns-footer></ns-footer>
+    </template>
+  </body>
+</html>

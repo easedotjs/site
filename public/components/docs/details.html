@@ -1,23 +1,24 @@
 <property name="path" default="index.html" attribute />
 
 <template>
-  <article id="content">
-    Loading...
-  </article>
+  <article id="content"></article>
 </template>
 
 <script>
   import { marked } from 'https://unpkg.com/marked@5.0.2/lib/marked.esm.js';
-  import { escape } from 'https://unpkg.com/html-escaper@3.0.3/min.js';
+  const cache = new Map();
+
+  function escapeHTML(str) {
+    return str.replace(/[&<>'"]/g, char => 
+        ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[char])
+    );
+  }
 
   export default function ({ root, el, props, $ }) {
-    console.error(escapeHtml.html);
-    const codeRenderer = (attr) => {
-      const {text, lang, type, escape} = attr;
-      return `<doc-code lang="${lang}">${escapeHtml.escape(type)}</doc-code>`;
+    const codeRenderer = ({text, lang}) => {
+      return `<doc-code lang="${lang}">${escapeHTML(text)}</doc-code>`;
     }
   
-
     marked.use({
       extensions: [{
         name: 'code',
@@ -26,23 +27,29 @@
     });
 
     props.path.watch(path => {
-      console.error(path);
-      fetch(`docs/${path}`)
+      if (cache.has(path)) {
+        el.content.innerHTML = cache.get(path);
+        return;
+      }
+
+      fetch(`documentation/${path}.md`)
         .then(response => response.text())
         .then(text => {
           el.content.innerHTML = marked(text);
-        })
-        .catch(console.error)
+          cache.set(path, el.content.innerHTML);
+        });
     });
   };
 </script>
 
 <style>
   :host {
+    box-sizing: border-box;
     padding: 20px;
-    max-width: 800px;    
+    max-width: min(800px, 100%);
     margin: 0 auto;
     color: var(--foreground);
+    overflow-x: auto;
   }
 
   a {
