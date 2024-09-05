@@ -34,12 +34,14 @@ Or, they can be more advanced with scripts and isolated styles.
 <attribute name="color" default="black" expose-to-styles attribute>
 <attribute name="title" attribute>
 
-<article>
-  <h1 id="title">
-    Article Title
-  </h1>
-  <slot></slot>
-</article>
+<template>
+  <article>
+    <h1 id="title">
+      Article Title
+    </h1>
+    <slot></slot>
+  </article>
+</template>
 
 <script>
   export default ({ el, props }) => {
