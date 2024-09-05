@@ -26,3 +26,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+body:not(.hydrated) {
+  display: none;
+}
