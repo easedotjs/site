@@ -18,19 +18,27 @@
   </head>
   <body>
     <ns-header></ns-header>
-    <ns-hero></ns-hero>
+    <ns-hero>
+      <p>No build step or bundler needed.</p>
+      <p>Pure HTML and JavaScript.</p>
+      <p><strong>Code. Upload. Done.</strong></p>
+      <p>That's <strong><em>Ease</em></strong>.</p>
+      <ns-button to="docs.html">Get Started</ns-button>
+      <ns-button to="docs.html">Documentation</ns-button>    
+    </ns-hero>
     <main>
-      <ns-details color="#442233">
+      <ns-details color="var(--paper-1)">
         <p>
-          Ease gives you the power of modern frameworks using
-          the tools built right into the browser. No more dealing with 
-          complex build tools, worrying about modules, or configuring a bundler.
+          Ease gives you the power of modern frameworks using the tools built right into the browser.
+        </p>
+        <p>
+          No need to set up a build enviroment, no need to learn a new language or syntax.
         </p>
         <p>
           <strong>Just write your code and <u>ship it</u>.</strong>
         </p>
       </ns-details>
-      <ns-details color="#223355">
+      <ns-details color="var(--paper-2)">
         <p>
           Since Ease is built on web standards, you can use it anywhere you 
           can use HTML, CSS, and JavaScript.    
@@ -42,39 +50,48 @@
           With very little to learn, anyone familiar with HTML can get started with Ease.
         </p>
       </ns-details>
-      <ns-demo>
-        <h1 slot="header">
+      <ns-demo bgcolor="#f5f5f5">
+        <h1>
           Load the Library
         </h1>
+        <p>
+          Start by adding the necessary script tags to your HTML file.
+        </p>
         <div slot="code">
           &lt;script type="module" src="https://unpkg.com/@easedotjs/core"&gt;&lt;/script&gt;<br/>
           &lt;script type="module" src="https://unpkg.com/@easedotjs/components"&gt;&lt;/script&gt;<br/>
         </div>
       </ns-demo>    
       <ns-demo>
-        <h1 slot="header">
+        <h1>
           Load a Component
         </h1>
+        <p>
+          Once you've loaded the library, you can load a component from an HTML document.
+        </p>
         <div slot="code">
           &lt;link rel="component" name="ns-hello" href="components/hello.html" /&gt;<br/>
         </div>
       </ns-demo>
-      <ns-demo>
-        <h1 slot="header">
+      <ns-demo bgcolor="#f5f5f5">
+        <h1>
           Use the Component
         </h1>
+        <p>
+          Once you've loaded the component, you can use it in your HTML.
+        </p>
         <div slot="code">
           &lt;ns-hello&gt;Hello World!&lt;/ns-hello&gt;<br/>
         </div>
       </ns-demo>
-      <ns-details color="#223355">
+      <ns-details color="var(--paper-1)">
         <p>
           Components can be complex, interactive isolated elements with their own styles, 
           scripts, and templates - or simple, static elements that just render content.
         </p>
       </ns-details>
-      <ns-demo>
-        <h1 slot="header">
+      <ns-demo  bgcolor="#f5f5f5">
+        <h1>
           Keep things simple and light...
         </h1>
         <div slot="filename">
@@ -85,7 +102,7 @@
         </div>
       </ns-demo>
       <ns-demo>
-        <h1 slot="header">
+        <h1>
           ...or build something more complex
         </h1>
         <div slot="filename">

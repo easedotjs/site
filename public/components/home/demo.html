@@ -1,14 +1,14 @@
+<property name="bgcolor" default="#eceae3" expose-to-styles attribute />
+
 <template>
-  <meta name="attribute" content="color" style />
-  <slot id="header" name="header"></slot>
+  <slot></slot>
   <code>
     <slot name="code"></slot>
   </code>
 </template>
 
 <script>
-  export default ({ root, el, attr }) => {
-  }
+  export default ({ root, el, attr }) => {}
 </script>
 
 <style>
@@ -18,24 +18,34 @@
     gap: 20px;
     padding: 16px 32px 24px 32px;
     text-align: center;
-    background-color: var(--color, #222);
+    background-color: var(--bgcolor);
     color: #FFF;
     font-family: var(--sans-serif);
   }
 
-  #header {
-    font-size: 0.6em;
-    font-family: var(--monospace);
+  ::slotted(h1) {
+    color: #222;
+    font-size: 1.2em;
+    font-family: var(--sans-serif);
     line-height: 1.8em;
+    font-weight: 600;
+    margin-bottom: 0;
+  }
+
+  ::slotted(p) {
+    color: #222;
+    font-size: 1em;
+    font-family: var(--sans-serif);
+    line-height: 1.6em;
     font-weight: 400;
+    margin: 0;
   }
 
   code {
-    border: 1px solid #555;
-    background-color: #555;
-    color: #FFF;
+    background-color: #fff;
+    color: #000;
     border-radius: 10px;
-    box-shadow: 0px 5px 10px #00000055;
+    box-shadow: 0px 1px 1px #00000055;
     text-align: left;
     padding: 16px;
   }

@@ -1,22 +1,24 @@
 <property name="bgcolor" default="#338" expose-to-styles attribute />
 <property name="color" default="#fff" expose-to-styles attribute />
+<property name="to" attribute />
 
 <template>
-  <button>
+  <button id="button">
     <slot></slot>
   </button>
 </template>
 
 <script>
-  export default ({ root, el, attr }) => {
+  export default ({ root, el, props, ext }) => {
+    el.button.onclick = () => {
+      ext.router.push(props.to.value);
+    };
   }
 </script>
 
 <style>
   :host {
     --border-radius: 3rem;
-    --degree: 45deg;
-    --shadow-color: #00000044;
   }
 
   button {
@@ -24,37 +26,12 @@
     margin: 8px 0;
     filter: contrast(1.2);
     border-radius: var(--border-radius);
-    border: 1px solid #FFF;
+    border: 1px solid #eee;
     padding: 16px 32px;
     font-size: 1.2rem;
-    background: linear-gradient(var(--degree), var(--bgcolor, rgba(108, 118, 149, 0.748)), var(--shadow-color));
-    color: var(--color, #fff);
+    background-color: var(--color, #fff);
     position: relative;
     filter: drop-shadow(0 0 5px #FFFFFF11);
     transition: all 0.3s;
-
-    &::before, &::after {
-      border-radius: calc(var(--border-radius) - 1px);
-      position: absolute;
-      inset: 2px;
-      content: '';
-      pointer-events: none;
-    }
-    &::before {
-      filter: blur(4px);
-      border: 2px solid #FFFFFF88;
-      border-bottom: 0;
-      border-right: 0;
-    }
-    &::after {
-      filter: blur(1px);
-      border: 1px solid #FFFFFF33;
-      border-bottom: 0;
-      border-right: 0;
-    }
-
-    &:hover {
-      --shadow-color: #00000099;
-    }
   }
 </style>

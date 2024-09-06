@@ -56,8 +56,8 @@
       bottom: -1px;
       height: 2px;
       background: linear-gradient(20deg, #003, #040, #403);
-      filter: blur(4px) brightness(4.8);
-      border-radius: 100%;
+      filter: brightness(4.8);
+      opacity: 0.3;
       pointer-events: none;
     }
   }
@@ -89,10 +89,6 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    filter: drop-shadow(0 0 0 transparent);
-    --colorA: #fff;
-    --colorB: #fff;
-    background-image: linear-gradient(45deg, var(--colorA), var(--colorB));
     
     &:hover {
       --colorA: #ddaacc;

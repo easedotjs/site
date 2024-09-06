@@ -1,21 +1,9 @@
 <template>
-  <p>No build step or bundler needed.</p>
-  <p>Pure HTML and JavaScript.</p>
-  <p><strong>Code. Upload. Done.</strong></p>
-  <p>That's <span class="rainbow-text">Ease</span>.</p>
-  <ns-button id="gstarted">Get Started</ns-button>
-  <ns-button id="docs" bgcolor="#772277">Documentation</ns-button>
+  <slot></slot>
 </template>
 
 <script no-warn>
-  export default ({el,$}) => {
-    el.gstarted.addEventListener('click', () => {
-      $.router.push('docs.html?path=getting-started');
-    });
-    el.docs.addEventListener('click', () => {
-      $.router.push('docs.html');
-    });
-  }
+  export default () => {}
 </script>
 
 <style>
@@ -30,19 +18,14 @@
   font-family: var(--monospace);
   font-size: 1.8em;
   font-weight: 400;
-  color: #fff;
+  color: #000;
   padding: 3rem 1rem;
-  /* animation: rotate 120s linear infinite; */
-  background: linear-gradient(var(--degrees), #44112200, #11334499), 
-              linear-gradient(calc(-13 * var(--degrees)), #ff00ff88, #3c0d9388),
-              linear-gradient(calc(-10 * var(--degrees)), #11ff00, #000000);
-  box-shadow: 0px -100px 150px inset #66330044, 
-              0px 30px 50px inset #00000099,
-              0px 50px 150px inset #000000FF;
+  background-color: rgb(248, 245, 238);
+  border-bottom: 1px solid #cac3ba;
 }
 
 .rainbow-text {
-  background-image: linear-gradient(45deg, #f389ad, #d2dffa);
+  background-image: linear-gradient(45deg, #cb1753, #1c3d83);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

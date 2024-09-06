@@ -12,6 +12,10 @@
   --color-2: #235;
   --color-3: #a53;
 
+  --paper-1: #eceae3;
+  --paper-2: #e6e4da;
+  --paper-3: #dcd8c8;
+
   --sans-serif: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   --serif: 'Georgia', 'Times New Roman', Times, serif;
   --monospace: 'Courier New', Courier, monospace;
@@ -20,13 +24,15 @@
 body, html {
   padding: 0;
   margin: 0;
+  background-color: black;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  opacity: 1;
 }
 
 body:not(.hydrated) {
-  display: none;
+  opacity: 0;
 }
