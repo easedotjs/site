@@ -5,10 +5,10 @@
   <component name="ns-button" href="./components/button.html" />
   <!-- Global Components -->
   <!-- /home components -->
-  <component name="ns-hero" href="./components/home/hero.html" />
+  <!-- <component name="ns-hero" href="./components/home/hero.html" /> -->
   <component name="ns-details" href="./components/home/details.html" />
-  <component name="ns-demo" href="./components/home/demo.html" />
   <component name="ns-debug" href="./components/debug.html" />
+  <component name="home-demo" href="./components/home/demo/demo.html" />
   <!-- /docs components -->
   <component name="doc-host" href="./components/docs/host.html" />
   <component name="doc-toc" href="./components/docs/toc.html" />

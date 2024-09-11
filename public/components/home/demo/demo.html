@@ -1,0 +1,24 @@
+<property name="bgcolor" default="#eceae3" expose-to-styles attribute />
+
+<template>
+  <slot></slot>
+</template>
+
+<script>
+  export default ({ root, el, attr }) => {}
+</script>
+
+<style>
+  :host {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 16px 32px 24px 32px;
+    text-align: center;
+    background-color: var(--bgcolor);
+    color: #FFF;
+    font-family: var(--sans-serif);
+  }
+
+
+</style>
