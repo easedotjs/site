@@ -1,4 +1,3 @@
-<property name="bgcolor" default="#338" expose-to-styles attribute />
 <property name="color" default="#fff" expose-to-styles attribute />
 <property name="to" attribute />
 
@@ -19,17 +18,32 @@
 <style>
   :host {
     --border-radius: 3rem;
+    --button-color: var(--color, #fff);
+    --border-color: hsl(0, 0%, 93%);
+    --text-color: #000;
   }
+
+  @media (prefers-color-scheme: dark) {
+    :host {
+      --button-color: color-mix(in hsl, var(--color) 30%, #000);
+      --border-color: color-mix(in hsl, hsl(0, 0%, 93%) 40%, #000);
+      --text-color: #fff;
+    }
+  }
+
 
   button {
     margin: 8px 0;
     filter: contrast(1.2);
     border-radius: var(--border-radius);
-    border: 1px solid #eee;
-    padding: 16px 32px;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 1rem 2rem;
     font-size: 1.2rem;
-    background-color: var(--color, #fff);
+    background-color: var(--button-color);
     position: relative;
     transition: all 0.3s;
   }
+
+  /* Dark mode support */
 </style>

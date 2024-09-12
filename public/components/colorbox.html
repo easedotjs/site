@@ -20,16 +20,17 @@
     padding: 32px 32px;
     text-align: center;
     background-color: var(--color, --paper-1);
-    color: #000;
+    color: var(--black);
     font-family: var(--sans-serif);
   }
 
-  :host([dark]) {
-    color: #FFF;
+  div {
+    max-width: 720px;
+    margin: 0 auto;
   }
 
   ::slotted(h1) {
-    color: #222;
+    color: var(--black);
     font-size: 1.2em;
     font-family: var(--sans-serif);
     line-height: 1.8em;
@@ -38,7 +39,7 @@
   }
 
   ::slotted(p) {
-    color: #222;
+    color: var(--black);
     font-size: 1em;
     font-family: var(--sans-serif);
     line-height: 1.6em;

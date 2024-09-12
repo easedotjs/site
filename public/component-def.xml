@@ -3,10 +3,10 @@
   <component name="ns-header" href="./components/header.html" />
   <component name="ns-footer" href="./components/footer.html" />
   <component name="ns-button" href="./components/button.html" />
+  <component name="ns-code" href="./components/code.html" />
+  <component name="ns-colorbox" href="./components/colorbox.html" />
   <!-- Global Components -->
   <!-- /home components -->
-  <!-- <component name="ns-hero" href="./components/home/hero.html" /> -->
-  <component name="ns-details" href="./components/home/details.html" />
   <component name="ns-debug" href="./components/debug.html" />
   <component name="home-demo" href="./components/home/demo/demo.html" />
   <!-- /docs components -->

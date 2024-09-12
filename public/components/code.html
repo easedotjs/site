@@ -1,0 +1,62 @@
+<template>
+  <code id="code">
+  </code>
+  <slot id="slot"></slot>
+</template>
+
+<script>
+  export default ({el}) => {
+    el.slot.assignedNodes().forEach(node => {
+      el.code.appendChild(node);
+    });
+    el.slot.remove();
+  }
+</script>
+
+<style>
+  code {
+    --code-text: var(--black);
+    display: inline-block;
+    text-align: left;
+    font-size: 0.8rem;
+    font-family: var(--monospace);
+    background-color: var(--white);
+    color: var(--black);
+    padding: 16px;
+    border-radius: 4px;
+    margin: 8px 0;
+    min-width: 600px;
+    max-width: 80vw;
+    
+
+    & span.tagstart {
+      &::before { content: '<'; color: var(--code-text) }
+      color: var(--code-tagstart);
+      &.v-no-attrs {
+        &::after { content: '>'; color: var(--code-text) }
+      }
+    }
+
+    & span.tagend {
+      &::before { content: '</'; color: var(--code-text) }
+      &::after { content: '>'; color: var(--code-text) }
+      color: var(--code-tagstart);
+      &.v-no-content {
+        &::before { content: '></'; color: var(--code-text) }  
+      }
+      &.v-self-closing {
+        &::before { content: '/'; color: var(--code-text) }  
+      }
+    }
+
+    & span.tagattr {
+      color: var(--code-attr);
+    }
+
+    & span.tagattrval {
+      color: var(--code-attrval);
+      &::before { content: '="'; color: var(--code-text) };
+      &::after { content: '"'; color: var(--code-text) };
+    }
+  }
+</style>

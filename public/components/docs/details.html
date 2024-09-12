@@ -37,6 +37,9 @@
         .then(text => {
           el.content.innerHTML = marked(text);
           cache.set(path, el.content.innerHTML);
+        })
+        .then(() => {
+          el.content.classList.add('loaded');
         });
     });
   };
@@ -50,6 +53,14 @@
     margin: 0 auto;
     color: var(--foreground);
     overflow-x: auto;
+    min-height: 100vh;
+  }
+  
+  #content {
+    opacity: 0;
+    &.loaded {
+      opacity: 1;
+    }
   }
 
   a {

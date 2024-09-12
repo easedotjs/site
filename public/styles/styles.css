@@ -5,25 +5,53 @@
 }
 
 :root {
-  --black: #111;
-  --white: #fff0f0;
+  --black: hsl(0, 0%, 7%);
+  --white: hsl(0, 0%, 99%);
 
-  --color-1: #423;
-  --color-2: #235;
-  --color-3: #a53;
+  --color-1: hsl(310, 24%, 19%);
+  --color-2: hsl(220, 43%, 23%);
+  --color-3: hsl(17, 54%, 43%);
 
-  --paper-1: #eceae3;
-  --paper-2: #e6e4da;
-  --paper-3: #dcd8c8;
+  --paper-1: hsl(47, 12%, 96%);
+  --paper-2: hsl(47, 12%, 82%);
+  --paper-3: hsl(47, 12%, 79%);
+
+  --slate-1: hsl(207, 6%, 95%);
+  --slate-2: hsl(207, 6%, 91%);
+  --slate-3: hsl(207, 6%, 87%);
 
   --sans-serif: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   --serif: 'Georgia', 'Times New Roman', Times, serif;
   --monospace: 'Courier New', Courier, monospace;
 
   --code-text: var(--black);
-  --code-tagstart: rgb(144, 32, 139);
-  --code-attr: rgb(32, 144, 139);
-  --code-attrval: rgb(86, 80, 28);
+  --code-tagstart: hsl(303, 64%, 35%);
+  --code-attr: hsl(176, 46%, 34%);
+  --code-attrval: hsl(53, 28%, 25%);  
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --black: hsl(0, 0%, 93%);
+    --white: hsl(0, 0%, 7%);
+
+    --color-1: hsl(300, 100%, 15%);
+    --color-2: hsl(120, 100%, 13%);
+    --color-3: hsl(180, 100%, 13%);
+
+    --paper-1: hsl(207, 6%, 15%);
+    --paper-2: hsl(207, 6%, 12%);
+    --paper-3: hsl(207, 6%, 10%);
+
+    --slate-1: hsl(207, 6%, 25%);
+    --slate-2: hsl(207, 6%, 20%);
+    --slate-3: hsl(207, 6%, 15%);
+
+    --code-text: var(--white);
+    --code-tagstart: hsl(303, 64%, 65%);
+    --code-attr: hsl(176, 46%, 65%);
+    --code-attrval: hsl(53, 28%, 75%);
+  }
 }
 
 body, html {
@@ -73,10 +101,10 @@ div#hero {
   font-family: var(--monospace);
   font-size: 1.8em;
   font-weight: 400;
-  color: #000;
+  color: var(--black);
   padding: 3rem 1rem;
-  background-color: rgb(248, 245, 238);
-  border-bottom: 1px solid #cac3ba;
+  background-color: var(--paper-1);
+  border-bottom: 1px solid var(--paper-2);
 
   & .rainbow-text {
     background-image: linear-gradient(45deg, #cb1753, #1c3d83);
@@ -97,54 +125,5 @@ div#hero {
     & ns-header {
       background: linear-gradient(20deg, #404, #002 );
     }
-  }
-
-  div#hero {
-    background-color: #222;
-    border-bottom: 1px solid #333;
-  }
-}
-
-code {
-  display: inline-block;
-  text-align: left;
-  color: #000;
-  font-size: 0.8rem;
-  font-family: var(--monospace);
-  background-color: #FFF;
-  padding: 16px;
-  border-radius: 4px;
-  margin: 8px 0;
-  min-width: 600px;
-  max-width: 80vw;
-
-  & span.tagstart {
-    &::before { content: '<'; color: var(--code-text) }
-    color: var(--code-tagstart);
-    &.v-no-attrs {
-      &::after { content: '>'; color: var(--code-text) }
-    }
-  }
-
-  & span.tagend {
-    &::before { content: '</'; color: var(--code-text) }
-    &::after { content: '>'; color: var(--code-text) }
-    color: var(--code-tagstart);
-    &.v-no-content {
-      &::before { content: '></'; color: var(--code-text) }  
-    }
-    &.v-self-closing {
-      &::before { content: '/'; color: var(--code-text) }  
-    }
-  }
-
-  & span.tagattr {
-    color: var(--code-attr);
-  }
-
-  & span.tagattrval {
-    color: var(--code-attrval);
-    &::before { content: '="'; color: var(--code-text) };
-    &::after { content: '"'; color: var(--code-text) };
   }
 }

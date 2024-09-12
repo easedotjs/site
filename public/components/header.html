@@ -33,27 +33,15 @@
 </script>
 
 <style>
-  @property --colorA {
-    syntax: '<color>';
-    initial-value: #fff;
-    inherits: false;
-  }
-
-  @property --colorB {
-    syntax: '<color>';
-    initial-value: #fff;
-    inherits: false;
-  }
-
   :host {
-    background: linear-gradient(20deg, #404, #002 );
+    background: linear-gradient(20deg, var(--color-1), #002 );
     position: relative;
     &:after {
       content: '';
       position: absolute;
       width: 100%;
       bottom: -1px;
-      height: 2px;
+      height: 1px;
       background: linear-gradient(20deg, #003, #040, #403);
       filter: brightness(4.8);
       opacity: 0.3;
